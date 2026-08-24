@@ -12,7 +12,7 @@ pipeline {
         stage('Install and Build using Docker') {
             steps {
                 echo "Running npm install and build inside a Node Docker container..."
-                sh 'docker run --rm -v "$PWD:/app" -w /app node:18-alpine sh -c "npm install && npm run build"'
+                sh 'docker run --rm -v /var/jenkins_home/workspace/Asset-Frontend:/app -w /app node:18-alpine sh -c "npm install && npm run build"'
             }
         }
 
