@@ -12,7 +12,8 @@ pipeline {
         stage('Install and Build using Docker') {
             steps {
                 echo "Running npm install and build inside a Node Docker container..."
-                sh 'docker run --rm -v /var/jenkins_home/workspace/Asset-Frontend:/app -w /app node:18-alpine sh -c "npm install && npm run build"'
+                // We use the Windows path (C:\...) so the Host Docker daemon can see it
+                sh 'docker run --rm -v "C:\\Users\\visverma7\\Desktop\\asset-management-frontend:/app" -w /app node:18-alpine sh -c "npm install && npm run build"'
             }
         }
 
